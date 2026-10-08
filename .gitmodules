@@ -1,0 +1,4 @@
+[submodule "Modules/BasicComponents"]
+	path = Modules/BasicComponents
+	url = git@github.com:HITSZ-WTRobot-Packages/BasicComponents.git
+	branch = main

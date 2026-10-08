@@ -1,0 +1,10 @@
+format_version = 1
+
+[project]
+name = "CoreV2.1_FullTest"
+ioc_file = "CoreV2.1_FullTest.ioc"
+
+[dependencies]
+packages = [
+    "memory::StaticObject",
+]
