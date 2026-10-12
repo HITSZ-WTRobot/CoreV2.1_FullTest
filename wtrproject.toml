@@ -6,5 +6,8 @@ ioc_file = "CoreV2.1_FullTest.ioc"
 
 [dependencies]
 packages = [
+    "Ethernet::UdpSocket",
+    "EthernetPHY::DP83822",
+    "EthernetPHY::LwipPlatform",
     "memory::StaticObject",
 ]
