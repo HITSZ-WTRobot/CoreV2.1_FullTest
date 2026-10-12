@@ -39,7 +39,6 @@ cmake/wtr_modules.cmake
 /Utilities/
 .startup/
 startup_stm32*.s
-*.ld
 .settings/
 .ioc.xml
 *.ioc.bak
@@ -47,6 +46,7 @@ startup_stm32*.s
 .mxresources
 .project
 .cproject
+cmake/stm32cubemx
 
 ### System files ###
 # OS-specific system files
