@@ -1,10 +1,12 @@
 #include "main.h"
 
-// Strong override of the weak HAL_ETH_MspInit/HAL_ETH_MspDeInit symbols
-// (Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_eth.c).
+// CubeMX USER_PHY (bsp==0) omits its ETH MSP template. Retain this sole board
+// glue from the cpkg Ethernet STM32H723 example; only public HAL APIs/macros.
+// PB10 GPIO/EXTI/NVIC and all EXTI vectors belong exclusively to generated code.
+extern "C" ETH_HandleTypeDef heth;
 extern "C" void HAL_ETH_MspInit(ETH_HandleTypeDef* handle)
 {
-    if (handle->Instance != ETH)
+    if (handle != &heth)
         return;
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -33,11 +35,12 @@ extern "C" void HAL_ETH_MspInit(ETH_HandleTypeDef* handle)
     // ETH completion callbacks release RTOS semaphores: priority must be >= 5.
     HAL_NVIC_SetPriority(ETH_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(ETH_IRQn);
+
 }
 
 extern "C" void HAL_ETH_MspDeInit(ETH_HandleTypeDef* handle)
 {
-    if (handle->Instance != ETH)
+    if (handle != &heth)
         return;
 
     HAL_NVIC_DisableIRQ(ETH_IRQn);
