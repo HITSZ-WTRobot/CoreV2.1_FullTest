@@ -15,6 +15,9 @@ Release/
 *.srec
 .clangd
 
+### Python host tools ###
+__pycache__/
+
 ### cpkg ###
 # cpkg generated integration files
 cmake/wtr_modules.cmake

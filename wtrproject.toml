@@ -9,5 +9,12 @@ packages = [
     "Ethernet::UdpSocket",
     "EthernetPHY::DP83822",
     "EthernetPHY::LwipPlatform",
+    "bsp::CANDriver2",
+    "bsp::GPIO_Driver",
+    "bsp::I2CDriver",
+    "libs::CRC",
+    "libs::RingBuffer",
+    "memory::DMABuffer",
     "memory::StaticObject",
+    "protocol::UartRxSync",
 ]
