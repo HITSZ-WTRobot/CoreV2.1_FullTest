@@ -269,14 +269,14 @@ KEEP(*(.isr_vector)) /* Startup code */
      . = ALIGN(32);
    } >RAM_AXI
 
-   .TxDescripSection 0x24000080 (NOLOAD) :
+   .TxDescripSection 0x24000100 (NOLOAD) :
    {
      . = ALIGN(32);
      KEEP(*(.TxDescripSection))
      . = ALIGN(32);
    } >RAM_AXI
 
-   .Rx_PoolSection 0x24000100 (NOLOAD) :
+   .Rx_PoolSection 0x24000200 (NOLOAD) :
    {
      . = ALIGN(32);
      KEEP(*(.Rx_PoolSection))
@@ -292,9 +292,9 @@ KEEP(*(.isr_vector)) /* Startup code */
      __lwip_heap_end__ = .;
    } >RAM_AXI
 
-   ASSERT(SIZEOF(.RxDescripSection) <= 0x80,
+   ASSERT(SIZEOF(.RxDescripSection) <= 0x100,
           "ETH RX descriptor section exceeds 128 bytes")
-   ASSERT(SIZEOF(.TxDescripSection) <= 0x80,
+   ASSERT(SIZEOF(.TxDescripSection) <= 0x100,
           "ETH TX descriptor section exceeds 128 bytes")
    ASSERT((ADDR(.Rx_PoolSection) + SIZEOF(.Rx_PoolSection)) <= 0x24005000,
           "ETH RX pool overlaps the lwIP heap")
